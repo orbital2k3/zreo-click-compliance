@@ -1,0 +1,249 @@
+/* Dashboard Page Styles */
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.header-top h1 {
+  margin: 0;
+}
+
+.report-row {
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.report-row:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.date-cell {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--panel-lighter);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-action:hover {
+  background-color: var(--border-lighter);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-action.btn-download {
+  color: var(--success);
+  border-color: rgba(63, 185, 80, 0.3);
+}
+
+.btn-action.btn-download:hover {
+  background-color: rgba(63, 185, 80, 0.1);
+  border-color: var(--success);
+}
+
+.btn-action.btn-view {
+  color: var(--accent);
+  border-color: rgba(88, 166, 255, 0.3);
+}
+
+.btn-action.btn-view:hover {
+  background-color: rgba(88, 166, 255, 0.1);
+  border-color: var(--accent);
+}
+
+/* Report Status Badges */
+.badge.report-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge.report-badge.pending {
+  background-color: rgba(210, 153, 34, 0.15);
+  color: var(--warning);
+}
+
+.badge.report-badge.processing {
+  background-color: rgba(88, 166, 255, 0.15);
+  color: var(--accent);
+  animation: pulse-badge 1.5s infinite;
+}
+
+.badge.report-badge.ready {
+  background-color: rgba(63, 185, 80, 0.15);
+  color: var(--success);
+}
+
+.badge.report-badge.failed {
+  background-color: rgba(248, 81, 73, 0.15);
+  color: var(--danger);
+}
+
+/* Pulse animation for processing badge */
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  background-color: currentColor;
+  border-radius: 50%;
+  animation: pulse-small 1.5s infinite;
+}
+
+@keyframes pulse-badge {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Alert Styles */
+.alert {
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.alert p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.alert.alert-error {
+  background-color: rgba(248, 81, 73, 0.1);
+  border: 1px solid rgba(248, 81, 73, 0.3);
+  color: var(--danger);
+}
+
+.alert.alert-warning {
+  background-color: rgba(210, 153, 34, 0.1);
+  border: 1px solid rgba(210, 153, 34, 0.3);
+  color: var(--warning);
+}
+
+.alert.alert-success {
+  background-color: rgba(63, 185, 80, 0.1);
+  border: 1px solid rgba(63, 185, 80, 0.3);
+  color: var(--success);
+}
+
+.alert.alert-info {
+  background-color: rgba(88, 166, 255, 0.1);
+  border: 1px solid rgba(88, 166, 255, 0.3);
+  color: var(--accent);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .header-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .header-top h1 {
+    width: 100%;
+  }
+
+  .header-top .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .btn-action {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Convert table to cards on mobile */
+  .data-table-container {
+    border: none;
+    background: none;
+    box-shadow: none;
+  }
+
+  .data-table {
+    display: block;
+  }
+
+  .data-table thead {
+    display: none;
+  }
+
+  .data-table tbody {
+    display: block;
+  }
+
+  .data-table tr {
+    display: block;
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  .data-table tr:hover {
+    background-color: var(--panel-bg);
+    border-color: var(--accent);
+  }
+
+  .data-table td {
+    display: block;
+    padding: 1rem;
+    border: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .data-table td:last-child {
+    border-bottom: none;
+  }
+
+  .data-table td:before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
