@@ -1,14 +1,14 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import vendorRoutes from './routes/vendors';
 import webhookRoutes from './routes/webhooks';
 import reportRoutes from './routes/reports';
 import stripeRoutes from './routes/stripe';
 import { jobQueue } from './worker/queue';
 import { processReport } from './worker/processReport';
-
-dotenv.config();
 const app = express();
 const port = process.env.PORT || 4000;
 
